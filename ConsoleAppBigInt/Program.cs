@@ -19,33 +19,41 @@ for (int i = 1;i < 10; i++)
   }
 }
 
-bool IsPrime(BigInteger bNumber)
+bool IsPrime(BigInteger number)
 {
-  if (bNumber == 0 || bNumber == 1)
+  if (number == 0 || number == 1)
   {
     return false;
   }
 
-  if (bNumber == 2)
+  if (number == 2)
   {
     return true;
   }
 
-  if (bNumber == 3)
+  if (number == 3)
   {
     return true;
   }
 
-  if (bNumber % 2 == 0 )
+  if (number % 2 == 0 )
   {
     return false;
   }
-  if (bNumber == 5 )
+  if (number == 5 )
   {
     return true;
   }
 
+  for (int i = 5; i <= Math.Sqrt(number); i++)
+  {
+    if (number/i == 0)
+    {
+      return false;
+    }
+  }
 
+  return true;
 }
 
 Console.WriteLine("press any key to exit:");
