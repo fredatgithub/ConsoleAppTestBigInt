@@ -6,7 +6,7 @@ var number = ulong.MaxValue;
 BigInteger aNumber = new BigInteger(number);
 Console.WriteLine($"ulong max value is {aNumber}");
 Console.WriteLine("Calcul des nombres premiers à partir de ulong.MaxValue :");
-for (int i = 1;i < 10; i++)
+for (int i = 1;i < 3; i++)
 {
   BigInteger bNumber = new BigInteger(number) + new BigInteger(i);
   if (IsPrime(bNumber))
@@ -45,15 +45,29 @@ bool IsPrime(BigInteger number)
     return true;
   }
 
-  for (int i = 5; i <= Math.Sqrt(number); i++)
+  int squareRoot = SquareRoot(number);
+  var sqrt = Math.Pow(Math.E, BigInteger.Log(number) / 2);
+
+  for (int i = 5; i <= sqrt; i += 2)
   {
-    if (number/i == 0)
+    if (number % i == 0)
     {
       return false;
     }
   }
 
   return true;
+}
+
+int SquareRoot(BigInteger number)
+{
+  int result = 1;
+  int start = 2;
+  do
+  {
+    result++;
+  } while (result * result <= number);
+  return result;
 }
 
 Console.WriteLine("press any key to exit:");
